@@ -34,3 +34,5 @@ io.on('connection', function (socket) {
 app.set('view engine', 'ejs');
 // router file
 app.use('/', router);
+//Static files for resource folder (img,video,css and etc.)
+app.use(express.static('./views/resource'));
