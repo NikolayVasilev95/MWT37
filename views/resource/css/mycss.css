@@ -1,0 +1,16 @@
+.MainHeight{
+  height: 500px;
+}
+.SearchBorderColor{
+  border: 1px solid #067bef !important;
+}
+.Right{
+  position: fixed;
+  top: 60px;
+  right: 5px;
+  z-index: 2;
+}
+.LiveStreamSize{
+  width: 100%;
+  height: 100%;
+}
