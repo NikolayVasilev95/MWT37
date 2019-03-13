@@ -37,7 +37,11 @@ router.post('/controllers/authenticate-controller', authenticateController.authe
 
 // route to handle Home
 router.get('/home', function(req, res){
-  res.render('pages/home');
+  res.render('pages/home', {
+    user: 'userName',
+    Title: 'title1',
+    Message: 'message'
+  });
 });
 
 // route to handle Node.js folder
