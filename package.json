@@ -13,7 +13,7 @@
     "cryptr": "^4.0.2",
     "ejs": "^2.6.1",
     "express": "^4.16.4",
-    "mysql": "^2.16.0",
+    "pg": "^7.8.2",
     "socket.io": "^2.2.0"
   },
   "devDependencies": {}

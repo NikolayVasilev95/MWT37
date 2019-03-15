@@ -9,23 +9,25 @@ module.exports.register = function(req,res){
   var code = req.body.code.toUpperCase();
 
   if (code === "MWT37") {
-    var users = {
-      "name":req.body.name,
-      "email":req.body.email,
-      "password":encryptedString,
-      "created_at":today,
-      "updated_at":today
-    }
-    connection.query('INSERT INTO users SET ?',users, function (error, results, fields) {
-      if (error) {
-        res.json({
-          status:false,
-          message:'there are some error with query'
-        })
-      }else{
-        res.redirect('/home');
-      }
-    });
+    var name = req.body.name;
+    var email = req.body.email;
+    var password = encryptedString;
+    var created_at = today;
+    var updated_at = today;
+    connection.query(
+      `INSERT INTO users (name, email, password, created_at, updated_at)
+      VALUES ($1, $2, $3, $4, $5);`,
+      [name.name, email.email, password.password, created_at.created_at, updated_at.updated_at],
+      function (error, results, fields) {
+        if (error) {
+          res.json({
+            status:false,
+            message:'there are some error with query'
+          })
+        }else{
+          res.redirect('/home');
+        }
+      });
   }else {
     res.redirect('/errors/code');
   }
