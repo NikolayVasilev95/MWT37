@@ -1,15 +1,15 @@
-// var pg = require('pg')
-//
-// var client = new pg.Client({
-//     user: "kqcnjtmjdugxlk",
-//     password: "ae308681e15df1afdd6a7b687f913d461f90e604a7757ece2368337102f41b3d",
-//     database: "deh5vvhfu1fs0v",
-//     port: 5432,
-//     host: "ec2-184-73-153-64.compute-1.amazonaws.com",
-//     ssl: true
-// });
-//
-// client.connect()
+var pg = require('pg')
+
+var client = new pg.Client({
+    user: "kqcnjtmjdugxlk",
+    password: "ae308681e15df1afdd6a7b687f913d461f90e604a7757ece2368337102f41b3d",
+    database: "deh5vvhfu1fs0v",
+    port: 5432,
+    host: "ec2-184-73-153-64.compute-1.amazonaws.com",
+    ssl: true
+});
+
+client.connect()
 
 // client.query(
 //   `CREATE TABLE users (
@@ -31,7 +31,17 @@
 //     client.end()
 // })
 
-// client.query(`select * from users`, (err, res) => {
+client.query(`select * from users`, (err, res) => {
+  console.log(err, res)
+  client.end()
+})
+
+// client.query(`SELECT password, id, email FROM users WHERE email = 'orlandoblu4@abv.bg'`, (err, res) => {
+//   console.log(err, res)
+//   client.end()
+// })
+
+// client.query(`TRUNCATE users`, (err, res) => {
 //   console.log(err, res)
 //   client.end()
 // })

@@ -17,13 +17,10 @@ module.exports.register = function(req,res){
     connection.query(
       `INSERT INTO users (name, email, password, created_at, updated_at)
       VALUES ($1, $2, $3, $4, $5);`,
-      [name.name, email.email, password.password, created_at.created_at, updated_at.updated_at],
+      [name, email, password, created_at, updated_at],
       function (error, results, fields) {
         if (error) {
-          res.json({
-            status:false,
-            message:'there are some error with query'
-          })
+          throw err;
         }else{
           res.redirect('/home');
         }
