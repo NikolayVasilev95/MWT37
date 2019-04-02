@@ -1,0 +1,76 @@
+<!--Navbar-->
+<nav class="navbar navbar-expand-lg navbar-dark blue-grey darken-4">
+  <div class="container">
+    <!-- Navbar brand -->
+    <img src="<%= brand %>" alt="brand" width="40px" height="40px">
+    <a class="navbar-brand text-default text-uppercase pl-2" href="/home">Mobile and web technologies</a>
+
+    <!-- Collapse button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+      aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="basicExampleNav">
+
+      <!-- Links -->
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item <%= m1 %>">
+          <a class="nav-link text-default text-uppercase" href="/home">Home
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-default text-uppercase" id="navbarDropdownMenuLink-333" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">Node.js
+          </a>
+          <div class="dropdown-menu dropdown-default blue-grey darken-4" aria-labelledby="navbarDropdownMenuLink-333">
+            <a class="dropdown-item <%= m2 %> text-default text-uppercase" href="/node/code">Code</a>
+            <a class="dropdown-item <%= m3 %> text-default text-uppercase" href="/node/video">Video</a>
+            <a class="dropdown-item <%= m4 %> text-default text-uppercase" href="/node/live_chat">Live Chat</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-default text-uppercase" id="navbarDropdownMenuLink-333" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">SEO
+          </a>
+          <div class="dropdown-menu dropdown-default blue-grey darken-4" aria-labelledby="navbarDropdownMenuLink-333">
+            <a class="dropdown-item <%= m5 %> text-default text-uppercase" href="/seo/code">Code</a>
+            <a class="dropdown-item <%= m6 %> text-default text-uppercase" href="/seo/video">Video</a>
+            <a class="dropdown-item <%= m7 %> text-default text-uppercase" href="/seo/live_chat">Live Chat</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-default text-uppercase" id="navbarDropdownMenuLink-333" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">Cordova
+          </a>
+          <div class="dropdown-menu dropdown-default blue-grey darken-4" aria-labelledby="navbarDropdownMenuLink-333">
+            <a class="dropdown-item <%= m8 %> text-default text-uppercase" href="/cordova/code">Code</a>
+            <a class="dropdown-item <%= m9 %> text-default text-uppercase" href="/cordova/video">Video</a>
+            <a class="dropdown-item <%= m10 %> text-default text-uppercase" href="/cordova/live_chat">Live Chat</a>
+          </div>
+        </li>
+        <li class="nav-item <%= m11 %>">
+          <a class="nav-link text-default text-uppercase" href="/about">About</a>
+        </li>
+      </ul>
+      <!-- Links -->
+
+      <ul class="navbar-nav nav-flex-icons">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-default" id="navbarDropdownMenuLink-333" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
+            <i class="fas fa-user"></i>
+          </a>
+          <div class="dropdown-menu dropdown-menu-center dropdown-default blue-grey darken-4" aria-labelledby="navbarDropdownMenuLink-333">
+            <a class="dropdown-item text-default text-uppercase" href="/logout">Logout</a>
+          </div>
+        </li>
+      </ul>
+
+    </div>
+    <!-- Collapsible content -->
+  </div>
+</nav>
+<!--/.Navbar-->

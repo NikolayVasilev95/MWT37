@@ -12,6 +12,8 @@
     <title>MWT | Registration</title>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+    <!-- Master Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Archivo+Narrow" rel="stylesheet">
     <!-- My CSS -->
     <link rel="stylesheet" href="/css/mycss.css">
     <!-- Bootstrap core CSS -->
@@ -22,77 +24,46 @@
   <body>
 
     <!--Navbar-->
-    <nav class="navbar navbar-expand-lg navbar-dark primary-color">
-      <div class="container">
-        <!-- Navbar brand -->
-        <a class="navbar-brand" href="/">Mobile and web technologies</a>
+    <%- include('../partials/startMenu'); -%>
+    <!--Navbar-->
 
-        <!-- Collapse button -->
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
-          aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <!-- Collapsible content -->
-        <div class="collapse navbar-collapse" id="basicExampleNav">
-
-          <!-- Links -->
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="/login">Login</a>
-            </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="/registration">Sing up
-                <span class="sr-only">(current)</span>
-              </a>
-            </li>
-          </ul>
-          <!-- Links -->
-
-        </div>
-        <!-- Collapsible content -->
-      </div>
-    </nav>
-    <!--/.Navbar-->
-
-    <main class="container MainHeight mt-3">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="d-flex justify-content-center">
-            <form action="/controllers/register-controller" method="POST" name="form">
-              <div class="md-form">
-                  <input type="text" id="form-firstname" name="name" class="form-control">
-                  <label for="form-firstname">Your Name*</label>
-                </div>
+    <main class="container MainHeight mt-5">
+      <div class="row h-100">
+        <div class="col-md-12 h-100">
+          <div class="d-flex justify-content-center h-100">
+            <div class="card RegistrationForm">
+              <form class="mx-5" action="/controllers/register-controller" method="POST" name="form">
                 <div class="md-form">
-                  <input type="password" id="form-password" name="password" class="form-control">
-                  <label for="form-password">Your Paswword*</label>
-                </div>
-                <div class="md-form">
-                  <input type="text" id="email" name="email" class="form-control">
-                  <label for="email" class="">Your email*</label>
-                </div>
-                <div class="md-form">
-                  <input type="password" id="form-code" name="code" class="form-control">
-                  <label for="form-code">Code*</label>
-                </div>
-                <input type="submit" name="submit" value="Registration" class="btn btn-info">
-            </form>
+                    <input type="text" id="form-firstname" name="name" class="form-control">
+                    <label for="form-firstname">Your Name*</label>
+                  </div>
+                  <div class="md-form">
+                    <input type="password" id="form-password" name="password" class="form-control">
+                    <label for="form-password">Your Paswword*</label>
+                  </div>
+                  <div class="md-form">
+                    <input type="email" id="email" name="email" class="form-control">
+                    <label for="email" class="">Your email*</label>
+                  </div>
+                  <div class="md-form">
+                    <input type="password" id="form-code" name="code" class="form-control">
+                    <label for="form-code">Code*</label>
+                  </div>
+                  <div class="<%= alert_danger %>" role="alert">
+                    <h6 class="mb-0"><%= error %></h6>
+                  </div>
+                  <div class="d-flex justify-content-center">
+                    <input type="submit" name="submit" value="Registration" class="btn blue-grey darken-4 text-default">
+                  </div>
+              </form>
+            </div>
           </div>
         </div>
       </div>
     </main>
 
     <!-- Footer -->
-    <footer class="page-footer font-small blue mt-3">
-
-      <!-- Copyright -->
-      <div class="footer-copyright text-center py-3">© 2019 Copyright:
-        <a href="/">Mobile and web technologies, Group: 37</a>
-      </div>
-      <!-- Copyright -->
-
-    </footer>
+    <%- include('../partials/startFooter'); -%>
     <!-- Footer -->
 
     <!-- SCRIPTS -->

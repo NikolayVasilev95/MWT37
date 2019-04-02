@@ -22,10 +22,13 @@ module.exports.register = function(req,res){
         if (error) {
           throw err;
         }else{
-          res.redirect('/home');
+          res.redirect('/login');
         }
       });
   }else {
-    res.redirect('/errors/code');
+    res.render('pages/registration',{
+      alert_danger: "alert alert-danger",
+      error: "Wrong code!"
+    });
   }
 }

@@ -1,6 +1,13 @@
 .MainHeight{
   height: 500px;
 }
+body{
+  background-image: url(../img/bbk.jpg);
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 .SearchBorderColor{
   border: 1px solid #067bef !important;
 }
@@ -16,4 +23,26 @@
 }
 .VideoHeight{
   height: 100%;
+}
+.RegistrationForm{
+  width: 35%;
+  height: 80%;
+  background-color: rgba(0, 77, 64, 0.78) !important;
+}
+.LoginForm{
+  width: 35%;
+  height: 50%;
+  background-color: none;
+}
+.md-form label {
+  color: white !important;
+}
+.active{
+  background-color: rgba(58, 124, 120, 0.76) !important;
+}
+.preview-font-title{
+  font-family: 'Satisfy', cursive;
+}
+*{
+  font-family: 'Archivo Narrow', sans-serif;
 }
