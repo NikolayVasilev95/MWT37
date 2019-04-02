@@ -45,7 +45,9 @@ router.get('/login', function(req, res){
   res.render('pages/login',{
     m1: "active",
     m2: "",
-    brand: "../img/37.png"
+    brand: "../img/37.png",
+    alert_danger: "",
+    error: ""
   });
 });
 
