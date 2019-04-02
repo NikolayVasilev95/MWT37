@@ -24,7 +24,8 @@ var sess;
 router.get('/', function(req, res){
   res.render('pages/index',{
     m1: "",
-    m2: ""
+    m2: "",
+    brand: "../img/37.png"
   });
 });
 
@@ -33,6 +34,7 @@ router.get('/registration', function(req, res){
   res.render('pages/registration', {
     m1: "",
     m2: "active",
+    brand: "../img/37.png",
     alert_danger: "",
     error: ""
   });
@@ -42,7 +44,8 @@ router.get('/registration', function(req, res){
 router.get('/login', function(req, res){
   res.render('pages/login',{
     m1: "active",
-    m2: ""
+    m2: "",
+    brand: "../img/37.png"
   });
 });
 
