@@ -43,5 +43,5 @@ socket.on('typing', function (data) {
 });
 
 socket.on('online', function (data) {
-  onlineusers.innerHTML += '<p class="mb-1"><span><i class="fas fa-user-circle"></i> </span><strong>' + data + '</strong></p>';
+  onlineusers.innerHTML += '<p class="mb-1 text-default"><span><i class="fas fa-user-circle"></i> </span><strong>' + data + '</strong></p>';
 });

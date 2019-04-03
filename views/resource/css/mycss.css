@@ -1,5 +1,5 @@
-.MainHeight{
-  height: 500px;
+*{
+  font-family: 'Archivo Narrow', sans-serif;
 }
 body{
   background-image: url(../img/bbk.jpg);
@@ -8,8 +8,14 @@ body{
   background-repeat: no-repeat;
   background-size: cover;
 }
+.active{
+  background-color: rgba(58, 124, 120, 0.76) !important;
+}
+.MainHeight{
+  height: 500px;
+}
 .SearchBorderColor{
-  border: 1px solid #067bef !important;
+  border: 2px solid #2bbba2 !important;
 }
 .Right{
   position: fixed;
@@ -37,12 +43,12 @@ body{
 .md-form label {
   color: white !important;
 }
-.active{
-  background-color: rgba(58, 124, 120, 0.76) !important;
+.md-form input::-webkit-input-placeholder {
+  color: #263238!important;
 }
 .preview-font-title{
   font-family: 'Satisfy', cursive;
 }
-*{
-  font-family: 'Archivo Narrow', sans-serif;
+.PostBG{
+  background-color: rgba(0, 77, 64, 0.78) !important;
 }

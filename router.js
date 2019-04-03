@@ -12,7 +12,11 @@ var registerController = require('./controllers/register-controller');
 
 
 //Static files
-router.use(session({secret: 'awdawd'}));
+router.use(session({
+  secret: 'awdawd',
+  resave: false,
+  saveUninitialized: true
+}));
 router.use(bodyParser.urlencoded({extended:true}));
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: true }));
@@ -78,7 +82,37 @@ router.get('/home', function(req, res){
       brand: "../img/37.png",
       user: sess.username,
       Title: 'title1',
+      UserName: 'Miley Steward',
+      date: '2019/01/10',
       Message: 'message'
+    });
+  } else {
+    res.redirect('/login');
+  }
+});
+
+// route to handle New Post
+router.get('/newPost', function(req, res){
+  sess = req.session;
+  if (sess.username) {
+    res.render('pages/newPost',{
+      headIcon: "../img/37.png",
+      headTitle: "MWT | New Post",
+      myCSS: "../css/mycss.css",
+      chatCSS: "",
+      m1: "",
+      m2: "",
+      m3: "",
+      m4: "",
+      m5: "",
+      m6: "",
+      m7: "",
+      m8: "",
+      m9: "",
+      m10: "",
+      m11: "",
+      brand: "../img/37.png",
+      user: sess.username
     });
   } else {
     res.redirect('/login');
