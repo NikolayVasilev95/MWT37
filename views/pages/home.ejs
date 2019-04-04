@@ -28,34 +28,53 @@
       </div>
       <div class="row">
         <div class="col-md-12 mb-3">
-          <!-- Post -->
-          <div class="row my-3">
-            <div class="col-md-12">
-              <!-- Card -->
-              <div class="card">
-                <!-- Card-header -->
-                <div class="card-header">
-                  <!-- Title -->
-                  <h4 class="card-title"><%= Title %></h4>
-                </div>
-                <!-- Card-body -->
-                <div class="card-body">
-                  <div class="media d-block d-md-flex mt-4">
+          <% for(var i=0; i<= ForLength-1; i++) { %>
+            <!-- Post -->
+            <div class="d-flex justify-content-center">
+              <div class="col-md-6 my-3">
+                <!-- Card -->
+                <div class="card">
+                  <!-- Card-header -->
+                  <div class="card-header">
+                    <!-- Title -->
+                    <h4 class="card-title"><%= Title[i] %></h4>
+                  </div>
+                  <!-- Card-body -->
+                  <div class="media d-block d-md-flex mt-2">
                     <div class="media-body text-center text-md-left ml-md-3 ml-0">
-                        <h5 class="mt-0 font-weight-bold"><%= UserName %></h5>
-                        <p class="text-primary"><%= date %></p>
+                        <h5 class="mb-2 font-weight-bold">
+                          <%= UserName[i] %>
+                          <span>
+                            <small class="text-muted"><%= date[i] %></small>
+                          </span>
+                        </h5>
                         <!-- Message -->
-                        <p class="card-text"><%= Message %></p>
+                        <p class="mb-2"><%= Message[i] %></p>
                     </div>
                   </div>
-                </div>
-                <div class="card-footer text-right">
-                  <!-- Button -->
-                  <a class="btn blue-grey darken-4 text-default m-0"><i class="fas fa-reply"></i></a>
+                  <div class="card-footer text-right">
+                    <!-- Button -->
+                    <a class="btn blue-grey darken-4 text-default m-0"><i class="fas fa-reply"></i></a>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          <% } %>
+          <!-- Pagination -->
+          <nav aria-label="Page navigation example">
+            <ul class="pagination pg-blue justify-content-center">
+              <li class="page-item disabled">
+                <a class="page-link text-default" tabindex="-1">Previous</a>
+              </li>
+              <li class="page-item"><a class="page-link text-default">1</a></li>
+              <li class="page-item"><a class="page-link text-default">2</a></li>
+              <li class="page-item"><a class="page-link text-default">3</a></li>
+              <li class="page-item">
+                <a class="page-link text-default">Next</a>
+              </li>
+            </ul>
+          </nav>
+          <!-- Pagination -->
         </div>
       </div>
     </main>

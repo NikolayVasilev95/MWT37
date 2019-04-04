@@ -17,13 +17,13 @@
               </div>
               <!-- Card-body -->
               <div class="card-body PostBG">
-                <form class="mx-5" action="/controllers/post-controller" method="POST" name="form">
+                <form class="mx-5" action="/controllers/newpost-controller" method="POST" name="form">
                   <div class="md-form">
                     <input type="text" id="form-title" name="title" class="form-control">
                     <label for="form-title">Title*</label>
                   </div>
                   <div class="md-form">
-                    <input type="text" id="form-name" name="name" class="form-control" placeholder="<%= user %>">
+                    <input type="text" id="form-name" name="name" class="form-control" value="<%= user %>">
                     <label for="form-name">Your Name*</label>
                   </div>
                   <!--Message-->
@@ -31,6 +31,9 @@
                     <i class="fas fa-pencil-alt prefix text-white"></i>
                     <textarea id="form10" class="md-textarea form-control" name="message" rows="3"></textarea>
                     <label for="form10">Your message*</label>
+                  </div>
+                  <div class="<%= alert_danger %>" role="alert">
+                    <h6 class="mb-0"><%= error %></h6>
                   </div>
                   <div class="d-flex justify-content-center">
                     <input type="submit" name="submit" value="Submit" class="btn blue-grey darken-4 text-default">

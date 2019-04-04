@@ -25,13 +25,42 @@ client.connect()
 // })
 
 // client.query(
+//   `CREATE TABLE post (
+//     id_post SERIAL NOT NULL PRIMARY KEY,
+//     title varchar(255),
+//     name varchar(255),
+//     message TEXT,
+//     created_at	timestamp default NULL
+// )`, (err, res) => {
+//   console.log(err, res)
+//   client.end()
+// })
+
+// client.query(
+//   `CREATE TABLE reply (
+//     id_reply SERIAL NOT NULL PRIMARY KEY,
+//     id_post INTEGER REFERENCES post(id_post),
+//     name varchar(255),
+//     message TEXT,
+//     created_at	timestamp default NULL
+// )`, (err, res) => {
+//   console.log(err, res)
+//   client.end()
+// })
+
+// client.query(
 //   `INSERT INTO users (name, email, password)
 //   VALUES ('Nikolay', 'a@abv.bg', '123');`, (err, res) => {
 //     console.log(err, res)
 //     client.end()
 // })
 
-client.query(`select * from users`, (err, res) => {
+// client.query(`select * from users`, (err, res) => {
+//   console.log(err, res)
+//   client.end()
+// })
+
+client.query(`select * from post`, (err, res) => {
   console.log(err, res)
   client.end()
 })

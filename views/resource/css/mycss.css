@@ -52,3 +52,7 @@ body{
 .PostBG{
   background-color: rgba(0, 77, 64, 0.78) !important;
 }
+.small, small {
+    font-size: 60% !important;
+    font-weight: 400;
+}

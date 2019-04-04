@@ -9,6 +9,7 @@ var path = require('path');
 //Controllers setup
 var authenticateController = require('./controllers/authenticate-controller');
 var registerController = require('./controllers/register-controller');
+var newPostController = require('./controllers/newpost-controller');
 
 
 //Static files
@@ -58,33 +59,53 @@ router.get('/login', function(req, res){
 // route to handle login and registration controllers
 router.post('/controllers/register-controller', registerController.register);
 router.post('/controllers/authenticate-controller', authenticateController.authenticate);
+// route to handle new post controllers
+router.post('/controllers/newpost-controller', newPostController.newpost);
 
 // route to handle Home
 router.get('/home', function(req, res){
   sess = req.session;
   if (sess.username) {
-    res.render('pages/home', {
-      headIcon: "./img/37.png",
-      headTitle: "MWT | Home",
-      myCSS: "./css/mycss.css",
-      chatCSS: "",
-      m1: "active",
-      m2: "",
-      m3: "",
-      m4: "",
-      m5: "",
-      m6: "",
-      m7: "",
-      m8: "",
-      m9: "",
-      m10: "",
-      m11: "",
-      brand: "../img/37.png",
-      user: sess.username,
-      Title: 'title1',
-      UserName: 'Miley Steward',
-      date: '2019/01/10',
-      Message: 'message'
+    connection.query("SELECT * FROM post", function (error, results, fields){
+      if (error) {
+        throw err;
+      } else {
+        var forLength = results.rows.length;
+        var title = [];
+        var username = [];
+        var date = [];
+        var message = [];
+        for (var i = 0; i <= results.rows.length-1; i++) {
+          title[i] = results.rows[i].title;
+          username[i] = results.rows[i].name;
+          date[i] = results.rows[i].created_at;
+          message[i] = results.rows[i].message;
+        }
+        res.render('pages/home', {
+          headIcon: "./img/37.png",
+          headTitle: "MWT | Home",
+          myCSS: "./css/mycss.css",
+          chatCSS: "",
+          m1: "active",
+          m2: "",
+          m3: "",
+          m4: "",
+          m5: "",
+          m6: "",
+          m7: "",
+          m8: "",
+          m9: "",
+          m10: "",
+          m11: "",
+          brand: "../img/37.png",
+          user: sess.username,
+          ForLength: forLength,
+          Title: title,
+          UserName: username,
+          date: date,
+          Message: message
+        });
+      }
     });
   } else {
     res.redirect('/login');
@@ -112,7 +133,9 @@ router.get('/newPost', function(req, res){
       m10: "",
       m11: "",
       brand: "../img/37.png",
-      user: sess.username
+      user: sess.username,
+      alert_danger: "",
+      error: ""
     });
   } else {
     res.redirect('/login');
