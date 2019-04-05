@@ -11,6 +11,14 @@ body{
 .active{
   background-color: rgba(58, 124, 120, 0.76) !important;
 }
+.md-form .active{
+  background-color: transparent !important;
+  color: rgb(43, 187, 173) !important;
+}
+#search .active{
+  background-color: transparent !important;
+  color: rgb(255, 255, 255) !important;
+}
 .MainHeight{
   height: 500px;
 }
@@ -55,4 +63,7 @@ body{
 .small, small {
     font-size: 60% !important;
     font-weight: 400;
+}
+.form-control {
+  color: #ffffff !important;
 }

@@ -20,7 +20,7 @@
       <div class="row my-2">
         <div class="col-md-12">
           <!-- Search form -->
-          <form class="form-inline d-flex justify-content-center">
+          <form id="search" class="form-inline d-flex justify-content-center">
             <i class="fas fa-search" aria-hidden="true"></i>
             <input class="form-control form-control-sm ml-3 w-75 SearchBorderColor" type="text" placeholder="Search....." aria-label="Search">
           </form>
@@ -28,7 +28,7 @@
       </div>
       <div class="row">
         <div class="col-md-12 mb-3">
-          <% for(var i=0; i<= ForLength-1; i++) { %>
+          <% for(var i=0; i<= Posts.length-1; i++) { %>
             <!-- Post -->
             <div class="d-flex justify-content-center">
               <div class="col-md-6 my-3">
@@ -37,28 +37,77 @@
                   <!-- Card-header -->
                   <div class="card-header">
                     <!-- Title -->
-                    <h4 class="card-title"><%= Title[i] %></h4>
+                    <h4 class="card-title font-weight-bold"><%= Posts[i].title %></h4>
                   </div>
                   <!-- Card-body -->
                   <div class="media d-block d-md-flex mt-2">
                     <div class="media-body text-center text-md-left ml-md-3 ml-0">
-                        <h5 class="mb-2 font-weight-bold">
-                          <%= UserName[i] %>
+                        <h5 class="mb-2">
+                          <%= Posts[i].name %>
                           <span>
-                            <small class="text-muted"><%= date[i] %></small>
+                            <small class="text-muted font-italic"><%= Posts[i].created_at %></small>
                           </span>
                         </h5>
                         <!-- Message -->
-                        <p class="mb-2"><%= Message[i] %></p>
+                        <p class="mb-2"><%= Posts[i].message %></p>
                     </div>
                   </div>
+                  <% for(var j=0; j<= Replies.length-1; j++) { %>
+                    <% if(Posts[i].id_post == Replies[j].id_post) { %>
+                      <!-- Replies -->
+                      <div class="media d-block d-md-flex mt-2">
+                        <div class="media-body text-center text-md-left ml-md-5 ml-0">
+                            <h5 class="mb-2">
+                              <%= Replies[j].name %>
+                              <span>
+                                <small class="text-muted font-italic"><%= Replies[j].created_at %></small>
+                              </span>
+                            </h5>
+                            <!-- Message -->
+                            <p class="mb-2"><%= Replies[j].message %></p>
+                        </div>
+                      </div>
+                      <!-- Replies -->
+                    <% } %>
+                  <% } %>
                   <div class="card-footer text-right">
                     <!-- Button -->
-                    <a class="btn blue-grey darken-4 text-default m-0"><i class="fas fa-reply"></i></a>
+                    <button type="button" class="btn blue-grey darken-4 text-default m-0" data-toggle="collapse" data-target="#collapseExample"
+    aria-expanded="false" aria-controls="collapseExample"><i class="fas fa-reply"></i></button>
                   </div>
                 </div>
+                <!-- Reply -->
+                <div id="collapseExample" class="card collapse">
+                  <!-- Card-body -->
+                  <div class="card-body PostBG">
+                    <form class="mx-5" action="/controllers/reply-controller" method="POST" name="form">
+                      <div class="md-form" style="display:none;">
+                        <input type="text" id="form-post" name="postid" class="form-control" value="<%= Posts[i].id_post %>">
+                        <label for="form-post">PostId*</label>
+                      </div>
+                      <div class="md-form" style="display:none;">
+                        <input type="text" id="form-name" name="name" class="form-control" value="<%= user %>">
+                        <label for="form-name">Your Name*</label>
+                      </div>
+                      <!--Message-->
+                      <div class="md-form">
+                        <i class="fas fa-pencil-alt prefix text-white"></i>
+                        <textarea id="form10" class="md-textarea form-control" name="message" rows="2"></textarea>
+                        <label for="form10">Your reply*</label>
+                      </div>
+                      <div class="<%= alert_danger %>" role="alert">
+                        <h6 class="mb-0"><%= error %></h6>
+                      </div>
+                      <div class="d-flex justify-content-center">
+                        <input type="submit" name="submit" value="Submit" class="btn blue-grey darken-4 text-default">
+                      </div>
+                    </form>
+                  </div>
+                </div>
+                <!-- Reply -->
               </div>
             </div>
+            <!-- Post -->
           <% } %>
           <!-- Pagination -->
           <nav aria-label="Page navigation example">
@@ -92,7 +141,6 @@
     <!-- MDB core JavaScript -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.6.1/js/mdb.min.js"></script>
     <!-- My SCRIPTS -->
-
 
   </body>
 </html>

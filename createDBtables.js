@@ -60,7 +60,7 @@ client.connect()
 //   client.end()
 // })
 
-client.query(`select * from post`, (err, res) => {
+client.query(`select * from reply`, (err, res) => {
   console.log(err, res)
   client.end()
 })
