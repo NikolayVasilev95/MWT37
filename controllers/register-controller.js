@@ -16,6 +16,7 @@ module.exports.register = function(req,res){
     var password = encryptedString;
     var created_at = today;
     var updated_at = today;
+    var level = 3;
 
     if (name && email && password) {
       connection.query("SELECT * FROM users WHERE email = $1", [email], function (error, results, fields){
@@ -32,9 +33,9 @@ module.exports.register = function(req,res){
             });
           } else {
             connection.query(
-              `INSERT INTO users (name, email, password, created_at, updated_at)
-              VALUES ($1, $2, $3, $4, $5);`,
-              [name, email, password, created_at, updated_at],
+              `INSERT INTO users (name, email, password, created_at, updated_at, level)
+              VALUES ($1, $2, $3, $4, $5, $6);`,
+              [name, email, password, created_at, updated_at, level],
               function (error, results, fields) {
                 if (error) {
                   throw err;

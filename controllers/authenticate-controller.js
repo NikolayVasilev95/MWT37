@@ -8,7 +8,7 @@ module.exports.authenticate=function(req,res){
   var password=req.body.password;
 
   if (email && password) {
-    connection.query("SELECT password, id, email, name FROM users WHERE email = $1", [email], function (error, results, fields) {
+    connection.query("SELECT password, id, email, name, level FROM users WHERE email = $1", [email], function (error, results, fields) {
       if (error) {
         throw err;
       }else{
@@ -18,8 +18,13 @@ module.exports.authenticate=function(req,res){
             sess = req.session;
             sess.email = req.body.email;
             sess.username = results.rows[0].name;
+            sess.level = results.rows[0].level;
             console.log(sess);
-            res.redirect('/home');
+            if (sess.level == 3) {
+              res.redirect('/home');
+            } else if (sess.level == 1) {
+              res.redirect('/admin');
+            }
           }else{
             res.render('pages/login',{
               m1: "active",

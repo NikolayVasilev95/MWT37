@@ -64,10 +64,53 @@ router.post('/controllers/authenticate-controller', authenticateController.authe
 router.post('/controllers/newpost-controller', newPostController.newpost);
 router.post('/controllers/reply-controller', replyPostController.reply);
 
+// route to handle adminpanel
+router.get('/admin', function(req, res){
+  sess = req.session;
+  if (sess.level == 1){
+    res.render('pages/adminpanel', {
+      headIcon: "./img/37.png",
+      headTitle: "MWT | Admin panel",
+      myCSS: "./css/mycss.css",
+      m1: "active",
+      m2: "",
+      brand: "../img/37.png",
+      user: sess.username
+    });
+  } else {
+    res.redirect('/login');
+  }
+});
+
+// route to handle adminpanel all users
+router.get('/adminUsers', function(req, res){
+  sess = req.session;
+  if (sess.level == 1){
+    connection.query("SELECT * FROM users", function (error, results, fields){
+      if (error) {
+        throw err;
+      } else {
+        res.render('pages/adminUsers', {
+          headIcon: "./img/37.png",
+          headTitle: "MWT | Admin panel",
+          myCSS: "./css/mycss.css",
+          m1: "",
+          m2: "active",
+          brand: "../img/37.png",
+          user: sess.username,
+          UsersTable: results.rows
+        });
+      }
+    });
+  } else {
+    res.redirect('/login');
+  }
+});
+
 // route to handle Home
 router.get('/home', function(req, res){
   sess = req.session;
-  if (sess.username) {
+  if (sess.level == 3) {
     connection.query("SELECT * FROM post", function (error, results, fields){
       if (error) {
         throw err;
@@ -113,7 +156,7 @@ router.get('/home', function(req, res){
 // route to handle New Post
 router.get('/newPost', function(req, res){
   sess = req.session;
-  if (sess.username) {
+  if (sess.level == 3) {
     res.render('pages/newPost',{
       headIcon: "../img/37.png",
       headTitle: "MWT | New Post",
@@ -143,7 +186,7 @@ router.get('/newPost', function(req, res){
 // route to handle Node.js folder
 router.get('/node/code', function(req, res){
   sess = req.session;
-  if (sess.username) {
+  if (sess.level == 3) {
     res.render('pages/node/NodeCode',{
       headIcon: "../img/37.png",
       headTitle: "MWT | Node Code",
@@ -168,7 +211,7 @@ router.get('/node/code', function(req, res){
 });
 router.get('/node/video', function(req, res){
   sess = req.session;
-  if (sess.username) {
+  if (sess.level == 3) {
     res.render('pages/node/NodeVideo',{
       headIcon: "../img/37.png",
       headTitle: "MWT | Node Video",
@@ -193,7 +236,7 @@ router.get('/node/video', function(req, res){
 });
 router.get('/node/live_chat', function(req, res){
   sess = req.session;
-  if (sess.username) {
+  if (sess.level == 3) {
     res.render('pages/node/NodeLiveChat',{
       headIcon: "../img/37.png",
       headTitle: "MWT | Node Live Chat",
@@ -220,7 +263,7 @@ router.get('/node/live_chat', function(req, res){
 // route to handle SEO folder
 router.get('/seo/code', function(req, res){
   sess = req.session;
-  if (sess.username) {
+  if (sess.level == 3) {
     res.render('pages/seo/SEOCode',{
       headIcon: "../img/37.png",
       headTitle: "MWT | SEO Code",
@@ -245,7 +288,7 @@ router.get('/seo/code', function(req, res){
 });
 router.get('/seo/video', function(req, res){
   sess = req.session;
-  if (sess.username) {
+  if (sess.level == 3) {
     res.render('pages/seo/SEOVideo',{
       headIcon: "../img/37.png",
       headTitle: "MWT | SEO Video",
@@ -270,7 +313,7 @@ router.get('/seo/video', function(req, res){
 });
 router.get('/seo/live_chat', function(req, res){
   sess = req.session;
-  if (sess.username) {
+  if (sess.level == 3) {
     res.render('pages/seo/SEOLiveChat',{
       headIcon: "../img/37.png",
       headTitle: "MWT | SEO Live Chat",
@@ -297,7 +340,7 @@ router.get('/seo/live_chat', function(req, res){
 // route to handle SEO folder
 router.get('/cordova/code', function(req, res){
   sess = req.session;
-  if (sess.username) {
+  if (sess.level == 3) {
     res.render('pages/cordova/CordovaCode',{
       headIcon: "../img/37.png",
       headTitle: "MWT | Cordova Code",
@@ -322,7 +365,7 @@ router.get('/cordova/code', function(req, res){
 });
 router.get('/cordova/video', function(req, res){
   sess = req.session;
-  if (sess.username) {
+  if (sess.level == 3) {
     res.render('pages/cordova/CordovaVideo',{
       headIcon: "../img/37.png",
       headTitle: "MWT | Cordova Video",
@@ -347,7 +390,7 @@ router.get('/cordova/video', function(req, res){
 });
 router.get('/cordova/live_chat', function(req, res){
   sess = req.session;
-  if (sess.username) {
+  if (sess.level == 3) {
     res.render('pages/cordova/CordovaLiveChat',{
       headIcon: "../img/37.png",
       headTitle: "MWT | Cordova Live Chat",
@@ -374,7 +417,7 @@ router.get('/cordova/live_chat', function(req, res){
 // route to handle About
 router.get('/about', function(req, res){
   sess = req.session;
-  if (sess.username) {
+  if (sess.level == 3) {
     res.render('pages/about',{
       headIcon: "../img/37.png",
       headTitle: "MWT | About",

@@ -55,15 +55,15 @@ client.connect()
 //     client.end()
 // })
 
-// client.query(`select * from users`, (err, res) => {
-//   console.log(err, res)
-//   client.end()
-// })
-
-client.query(`select * from reply`, (err, res) => {
+client.query(`select * from users`, (err, res) => {
   console.log(err, res)
   client.end()
 })
+
+// client.query(`select * from reply`, (err, res) => {
+//   console.log(err, res)
+//   client.end()
+// })
 
 // client.query(`SELECT password, id, email FROM users WHERE email = 'orlandoblu4@abv.bg'`, (err, res) => {
 //   console.log(err, res)
@@ -71,6 +71,21 @@ client.query(`select * from reply`, (err, res) => {
 // })
 
 // client.query(`TRUNCATE users`, (err, res) => {
+//   console.log(err, res)
+//   client.end()
+// })
+
+// client.query(`ALTER TABLE users ADD COLUMN level int;`, (err, res) => {
+//   console.log(err, res)
+//   client.end()
+// })
+
+// client.query(`UPDATE users SET level = 3`, (err, res) => {
+//   console.log(err, res)
+//   client.end()
+// })
+
+// client.query(`UPDATE users SET level = 1 WHERE id = 12`, (err, res) => {
 //   console.log(err, res)
 //   client.end()
 // })
